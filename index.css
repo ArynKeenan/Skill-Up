@@ -5,6 +5,8 @@ body {
     font-family: Inter, sans-serif;
     margin: 0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -89,31 +91,64 @@ header h1 {
     padding-left: 10px;
 }
 
-/*footer{
+.user-skill-container {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.user-skill-container div {
+    flex: 1;
+}
+
+.user-skills-header i {
+    color: #22C55E;
+    font-size: 26px;
+}
+
+.user-skills-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-learning-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-learning-header i {
+    color: #EF4444;
+    font-size: 26px;
+}
+
+footer{
+    width: 100%;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 10px;
     box-sizing: border-box;
+    margin-top: auto;
+
 }
 
-
 .button {
-    padding: 1em 2em;
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    letter-spacing: 5px;
-    text-transform: uppercase;
     cursor: pointer;
     color: rgb(44, 156, 175);
     transition: all 1000ms;
-    font-size: 15px;
+    font-size: 24px;
     position: relative;
     overflow: hidden;
-    outline: 2px solid rgb(44, 156, 175);
-    width: 200px;
-    flex: 1;
+    outline: 3px solid rgb(44, 156, 175);
+    width: 164px;
+    height: 64px;
 }
 
 .button:hover {
@@ -142,22 +177,22 @@ header h1 {
 
 .badges {
     display: flex;
-    flex-direction: column;
-    gap: 10px; 
-    align-items: center;
+    flex-direction: row;
+    gap: 5px; 
+    padding: 5px;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px 0;
+    justify-content: flex-start;
 }
 
-.badges > button {
-    font-size: 14px;
+.badges > a {
+    font-size: 16px;
     line-height: 20px;
     padding: 2px 8px;
-    cursor: pointer;
+    cursor: default;
     border: none;
     border-radius: 6px;
     outline: none;
+    flex-shrink: 0;
 }
 
 
@@ -171,4 +206,4 @@ header h1 {
     background-color: rgba(239, 68, 68, 0.10);
     color: rgb(239 68 68);
     border: 1px rgb(239 68 68) solid;
-} */
+}
