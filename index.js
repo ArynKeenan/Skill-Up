@@ -1,7 +1,5 @@
 // const usersSkillsList = document.getElementById('user-skills-list')
 // const userSkillsHeader = document.getElementById('user-skills-header')
-// const compareBtn = document.getElementById('compare-Btn')
-
 // const usersSkills = ["HTML", "react", "node.js", "python", "docker", "aws", "git", "jest", "rest api", "agile", "llm", "apple"]
 
 
@@ -29,7 +27,6 @@
 // ];
 
 
-
 // compareBtn.onclick = function() {
 //     let numberOfSkills = 0
 //     usersSkillsList.innerHTML = ''
@@ -43,6 +40,18 @@
 //     }
 //     userSkillsHeader.innerText = `You Have (${numberOfSkills})`
 // }
+
+function compareSkills(){
+    alert("Congratulations!\nYou have discovered an undeveloped feature");
+}
+
+function updateSkills(){
+    alert("Congratulations!\nYou have discovered an undeveloped feature");
+}
+
+function settings(){
+    alert("Congratulations!\nYou have discovered an undeveloped feature");
+}
 
 
 
