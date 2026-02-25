@@ -14,7 +14,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <h1 class="logo">Skill Up</h1>
-            <a onclick="settings()" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
         </div>
     </nav>
 
@@ -34,33 +34,49 @@
     <div class="user-skill-container">
         <div>
             <div class="user-skills-header">
-                <h2><i class="fa fa-check-circle" aria-hidden="true"></i> You Have (4)</h2>
+                <h2 id="user-skills-header"></h2>
             </div>
-            <div class="badges">
-                <a class="green">HTML</a>
-                <a class="green">CSS</a>
-                <a class="green">AWS</a>
-                <a class="green">React</a>
-                <a class="green">Javascript</a>
-            </div>
+            <div id="user-skill-badge-list" class="badges"></div>
         </div>
         <div>
             <div class="site-learning-header">
-                <h2><i class="fa fa-times-circle" aria-hidden="true"></i> To Learn (5)</h2>
+                <h2 id="user-learning-header"></h2>
             </div>
-            <div class="badges">
-                <a class="red">Node.Js</a>
-                <a class="red">Oracle Db</a>
-                <a class="red">Python</a>
-                <a class="red">Docker</a>
+            <div id="user-learning-badge-list" class="badges">
             </div>
         </div>
     </div> 
     
     <footer>
+        <button class="button" onclick="addSkills()">Add Skills</button>
         <button class="button" onclick="compareSkills()">Compare</button>
-        <button class="button"  onClick="updateSkills()">Update Skills</button>
     </footer>
+
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <nav class="modal-navbar">
+                <a onclick="closeModal()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <h1 class="logo">Add Skills</h1>
+            </nav>
+            <hr>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 id="modal-title-header"><i class="fa fa-check-circle" aria-hidden="true"></i> You Have (3)</h2>
+                    <button class="modal-button-remove">Remove All</button>
+                </div>
+                <div id="modal-skills" class="badges">
+                    <a class="green">HTML</a>
+                    <a class="green">CSS</a>
+                    <a class="green">React</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="text" id="input-el" placeholder="Enter a skill">
+                <button id="add-skill" class="modal-button">Add</button>
+            </div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>
