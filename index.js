@@ -5,14 +5,15 @@ const userLearningHeader = document.getElementById('user-learning-header')
 const modal = document.getElementById("modal");
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("add-skill")
+const deleteBtn = document.getElementById("delete-all")
 const modalSkillEl = document.getElementById('modal-skills')
+const skillsFromLocalStorage = JSON.parse( localStorage.getItem("mySkills") )
+let userSkills = []
 
-
-
-
-//Will be replaced with user input for local storage
-const userSkills = ["HTML", "react", "node.js", "python", "docker", "aws", "git", "jest", "rest api", "agile", "llm", "apple"]
-
+if (skillsFromLocalStorage) {
+    userSkills = skillsFromLocalStorage
+    render(userSkills)
+}
 
 const devSkills = [
   "html", "css3", "javascript", "python", "java",
@@ -24,7 +25,7 @@ const devSkills = [
 inputBtn.addEventListener("click", function() {
     userSkills.push(inputEl.value)
     inputEl.value = ""
-    localStorage.setItem("userSkills", JSON.stringify(userSkills) )
+    localStorage.setItem("mySkills", JSON.stringify(userSkills) )
     render(userSkills)
 })
 
@@ -36,11 +37,17 @@ function render(skills) {
     modalSkillEl.innerHTML = listItems
 }
 
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    userSkills = []
+    render(userSkills)
+})
+
 function compareSkills(){
     let numberOfSkills = 0
-    userSkillsEl.innerHTML = ''
-    learningSkillsEl.innerHTML = ''
     let skillsToLearn = [...devSkills]
+
+    resetHeeaders()
 
     userSkills.forEach(userSkill => {
         devSkills.forEach(devSkill => {
@@ -60,7 +67,11 @@ function compareSkills(){
     userLearningHeader.innerHTML = `<i class="fa fa-times-circle" aria-hidden="true"></i> To Learn (${skillsToLearn.length})`
 
     setProgressPercentage(numberOfSkills, devSkills.length)
+}
 
+function resetHeeaders() {
+    userSkillsEl.innerHTML = ''
+    learningSkillsEl.innerHTML = ''
 }
 
 function setProgressPercentage(numOfSkillsUserHas, totalSkills) {
