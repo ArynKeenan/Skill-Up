@@ -16,7 +16,7 @@ if (skillsFromLocalStorage) {
 }
 
 const devSkills = [
-  "html", "css3", "javascript", "python", "java",
+  "html", "css", "javascript", "python", "java",
   "react", "vue.js", "redux",
   "git", "github", "docker",
 
@@ -32,7 +32,7 @@ inputBtn.addEventListener("click", function() {
 function render(skills) {
     let listItems = ""
     for (let i = 0; i < skills.length; i++) {
-        listItems += `<a class="green">${skills[i]}</a>`
+        listItems += `<a class="green">${skills[i].charAt(0).toUpperCase() + skills[i].slice(1)}</a>`
     }
     modalSkillEl.innerHTML = listItems
 }
@@ -52,7 +52,7 @@ function compareSkills(){
     userSkills.forEach(userSkill => {
         devSkills.forEach(devSkill => {
             if (userSkill.toLowerCase() === devSkill.toLowerCase()) {
-                userSkillsEl.innerHTML += `<a class="green">${userSkill}</a>`
+                userSkillsEl.innerHTML += `<a class="green">${userSkill.charAt(0).toUpperCase() + userSkill.slice(1)}</a>`
                 numberOfSkills++
                 skillsToLearn = skillsToLearn.filter(skill => skill.toLowerCase() !== devSkill.toLowerCase())
             }
@@ -60,7 +60,7 @@ function compareSkills(){
     })
 
     skillsToLearn.forEach(skill => {
-        learningSkillsEl.innerHTML += `<a class="red">${skill}</a>`
+        learningSkillsEl.innerHTML += `<a class="red">${skill.charAt(0).toUpperCase() + skill.slice(1)}</a>`
     })
 
     userSkillsHeader.innerHTML = `<i class="fa fa-check-circle" aria-hidden="true"></i> You Have (${numberOfSkills})`
@@ -87,7 +87,7 @@ function setProgress(percentage) {
     progressText.textContent = percentage
 }
 
-function addSkills(){
+function openModal(){
   modal.style.display = "block";
 }
 function closeModal(){
