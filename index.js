@@ -47,7 +47,7 @@ function compareSkills(){
     let numberOfSkills = 0
     let skillsToLearn = [...devSkills]
 
-    resetHeeaders()
+    resetHeaders()
 
     userSkills.forEach(userSkill => {
         devSkills.forEach(devSkill => {
@@ -69,7 +69,7 @@ function compareSkills(){
     setProgressPercentage(numberOfSkills, devSkills.length)
 }
 
-function resetHeeaders() {
+function resetHeaders() {
     userSkillsEl.innerHTML = ''
     learningSkillsEl.innerHTML = ''
 }
