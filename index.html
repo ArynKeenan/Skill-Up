@@ -14,7 +14,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <h1 class="logo">Skill Up</h1>
-            <a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a onclick="openInfoModal()"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
         </div>
     </nav>
 
@@ -48,15 +48,15 @@
     </div> 
     
     <footer>
-        <button class="button" onclick="openModal()">Add Skills</button>
+        <button class="button" onclick="openSkillModal()">Add Skills</button>
         <button class="button" onclick="compareSkills()">Compare</button>
     </footer>
 
 
-    <div id="modal" class="modal">
+    <div id="add-skill-modal" class="modal">
         <div class="modal-content">
             <nav class="modal-navbar">
-                <a onclick="closeModal()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <a onclick="closeSkillModal()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                 <h1 class="logo">Add Skills</h1>
             </nav>
             <hr>
@@ -67,9 +67,30 @@
                 </div>
                 <div id="modal-skills" class="badges"></div>
             </div>
-            <div class="modal-footer">
+            <div class="skill-modal-footer">
                 <input type="text" id="input-el" placeholder="Enter a skill">
                 <button id="add-skill" class="modal-button">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <nav class="modal-navbar">
+                <a onclick="closeInfoModal()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <h1 class="logo">Info</h1>
+            </nav>
+            <hr>
+            <div class="modal-body">
+                <h2>About Skill Up</h2>
+                <p>Skill Up is designed to be a simple tool for tracking and comparing your skills 
+                    with the skills needed for your placement/graduate software dev role.
+                </p>
+                <h2>How It Works</h2>
+                <p>Add your skills, then compare them to a job's requirements to see your match percentage.</p>
+            </div>
+            <div class="info-modal-footer">
+                <p>Developed By Aryn Keenan</p>
             </div>
         </div>
     </div>

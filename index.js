@@ -2,9 +2,10 @@ const userSkillsEl = document.getElementById('user-skill-badge-list')
 const learningSkillsEl = document.getElementById('user-learning-badge-list')
 const userSkillsHeader = document.getElementById('user-skills-header')
 const userLearningHeader = document.getElementById('user-learning-header')
-const modal = document.getElementById("modal");
+const skillModalEl = document.getElementById("add-skill-modal");
+const infoModalEl = document.getElementById("info-modal");
 const inputEl = document.getElementById("input-el")
-const inputBtn = document.getElementById("add-skill")
+const addNewSkill = document.getElementById("add-skill")
 const deleteBtn = document.getElementById("delete-all")
 const modalSkillEl = document.getElementById('modal-skills')
 const skillsFromLocalStorage = JSON.parse( localStorage.getItem("mySkills") )
@@ -22,11 +23,13 @@ const devSkills = [
 
 ]
 
-inputBtn.addEventListener("click", function() {
-    userSkills.push(inputEl.value)
-    inputEl.value = ""
-    localStorage.setItem("mySkills", JSON.stringify(userSkills) )
-    render(userSkills)
+addNewSkill.addEventListener("click", function() {
+    if (inputEl.value.trim() !== "") {
+        userSkills.push(inputEl.value)
+        inputEl.value = ""
+        localStorage.setItem("mySkills", JSON.stringify(userSkills) )
+        render(userSkills)
+    }
 })
 
 function render(skills) {
@@ -87,15 +90,24 @@ function setProgress(percentage) {
     progressText.textContent = percentage
 }
 
-function openModal(){
-  modal.style.display = "block";
+function openSkillModal(){
+  skillModalEl.style.display = "block";
 }
-function closeModal(){
-  modal.style.display = "none";
+function closeSkillModal(){
+  skillModalEl.style.display = "none";
+}
+
+function openInfoModal(){
+  infoModalEl.style.display = "block";
+}
+function closeInfoModal(){
+  infoModalEl.style.display = "none";
 }
 
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == skillModalEl) {
+    skillModalEl.style.display = "none";
+  } else if (event.target == infoModalEl) {
+    infoModalEl.style.display = "none";
   }
 }
