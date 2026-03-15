@@ -4,9 +4,13 @@
     "name": "Skill Up",
     "action": {
         "default_popup": "index.html",
-         "default_icon": "needToCreateLogo.png"
+        "default_icon": "skillUpLogo.png"
     },
-    "permissions": [
-        "tabs"
+    "permissions": ["activeTab", "storage", "scripting"],
+    "content_scripts": [
+        {
+        "matches": ["<all_urls>"],
+        "js": ["index.js"]
+        }
     ]
 }
