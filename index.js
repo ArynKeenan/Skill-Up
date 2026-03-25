@@ -5,12 +5,71 @@ const userLearningHeader = document.getElementById('user-learning-header')
 const skillModalEl = document.getElementById("add-skill-modal");
 const infoModalEl = document.getElementById("info-modal");
 const inputEl = document.getElementById("input-el")
-const addNewSkill = document.getElementById("add-skill")
-const deleteBtn = document.getElementById("delete-all")
 const modalSkillEl = document.getElementById('modal-skills')
 
-const skillsFromLocalStorage = JSON.parse( localStorage.getItem("mySkills") )
 let userSkills = []
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const addNewSkill = document.getElementById("add-skill")
+    const deleteBtn = document.getElementById("delete-all")
+    const addSkillsBtn = document.getElementById("add-skills-btn")
+    const compareBtn = document.getElementById("compare-btn")
+    const infoIcon = document.getElementById("info-icon")
+    const closeSkillModalBtn = document.getElementById("close-skill-modal")
+    const closeInfoModalBtn = document.getElementById("close-info-modal")
+    
+    chrome.storage.local.get(['mySkills'], (result) => {
+        if (result.mySkills) {
+            userSkills = result.mySkills
+            render(userSkills)
+        }
+    })
+
+    // Add event listeners after DOM is ready
+    if (addNewSkill) {
+        addNewSkill.addEventListener("click", function() {
+            if (inputEl.value.trim() !== "") {
+                userSkills.push(inputEl.value)
+                inputEl.value = ""
+                chrome.storage.local.set({'mySkills': userSkills})
+                render(userSkills)
+            }
+        })
+    }
+
+    if (deleteBtn) {
+        deleteBtn.addEventListener("dblclick", function() {
+            chrome.storage.local.remove(['mySkills'])
+            userSkills = []
+            render(userSkills)
+        })
+    }
+
+    // Modal event listeners
+    if (addSkillsBtn) {
+        addSkillsBtn.addEventListener("click", openSkillModal)
+    }
+
+    if (compareBtn) {
+        compareBtn.addEventListener("click", compareSkills)
+    }
+
+    if (infoIcon) {
+        infoIcon.addEventListener("click", openInfoModal)
+        infoIcon.style.cursor = "pointer"
+    }
+
+    if (closeSkillModalBtn) {
+        closeSkillModalBtn.addEventListener("click", closeSkillModal)
+        closeSkillModalBtn.style.cursor = "pointer"
+    }
+
+    if (closeInfoModalBtn) {
+        closeInfoModalBtn.addEventListener("click", closeInfoModal)
+        closeInfoModalBtn.style.cursor = "pointer"
+    }
+})
 
 const skillsDb = [
   // Languages
@@ -41,22 +100,6 @@ const skillsDb = [
   "pandas", "numpy", "tensorflow", "pytorch", "spark", "tableau", "power bi"
 ]
 
-if (skillsFromLocalStorage) {
-    userSkills = skillsFromLocalStorage
-    render(userSkills)
-}
-
-
-
-addNewSkill.addEventListener("click", function() {
-    if (inputEl.value.trim() !== "") {
-        userSkills.push(inputEl.value)
-        inputEl.value = ""
-        localStorage.setItem("mySkills", JSON.stringify(userSkills) )
-        render(userSkills)
-    }
-})
-
 function render(skills) {
     let listItems = ""
     for (let i = 0; i < skills.length; i++) {
@@ -64,12 +107,6 @@ function render(skills) {
     }
     modalSkillEl.innerHTML = listItems
 }
-
-deleteBtn.addEventListener("dblclick", function() {
-    localStorage.clear()
-    userSkills = []
-    render(userSkills)
-})
 
 function compareSkills() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

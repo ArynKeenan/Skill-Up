@@ -291,6 +291,14 @@ footer{
     padding: 2px;
 }
 
+.modal-body p{
+    font-size: 12px;
+}
+.modal-body h3{
+    font-size: 14px;
+    font-weight: bold;
+}
+
 .skill-modal-footer{
     width: 100%;
     padding: 10px;
@@ -309,6 +317,7 @@ footer{
     width: 100%;
     box-sizing: border-box;
     flex-shrink: 0;
+    color: gray;
 }
 
 .modal-button-remove {

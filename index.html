@@ -14,7 +14,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <h1 class="logo">Skill Up</h1>
-            <a onclick="openInfoModal()"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+            <a id="info-icon"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
         </div>
     </nav>
 
@@ -48,15 +48,15 @@
     </div> 
     
     <footer>
-        <button class="button" onclick="openSkillModal()">Add Skills</button>
-        <button class="button" onclick="compareSkills()">Compare</button>
+        <button class="button" id="add-skills-btn">Add Skills</button>
+        <button class="button" id="compare-btn">Compare</button>
     </footer>
 
 
     <div id="add-skill-modal" class="modal">
         <div class="modal-content">
             <nav class="modal-navbar">
-                <a onclick="closeSkillModal()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <a id="close-skill-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <h1 class="logo">Add Skills</h1>
             </nav>
             <hr>
@@ -77,20 +77,24 @@
     <div id="info-modal" class="modal">
         <div class="modal-content">
             <nav class="modal-navbar">
-                <a onclick="closeInfoModal()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <a id="close-info-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <h1 class="logo">Info</h1>
             </nav>
             <hr>
             <div class="modal-body">
-                <h2>About Skill Up</h2>
-                <p>Skill Up is designed to be a simple tool for tracking and comparing your skills 
-                    with the skills needed for your placement/graduate software dev role.
+                <h1>About Skill Up</h1>
+                <p>
+                    Skill Up bridges the gap between your talent and your next role by analyzing job descriptions in real-time. 
+                    Click Compare to instantly scan any listing against your saved profile for a compatibility score. 
+                    Use the Add Skills modal to input your tech stack, while the Remove All feature utilizes a safety-first "double-click" mechanic to prevent accidental data loss.
                 </p>
-                <h2>How It Works</h2>
-                <p>Add your skills, then compare them to a job's requirements to see your match percentage.</p>
+                <p>
+                    Note: Accuracy depends on our current skill library. 
+                    Niche or non-standard terms may not be captured; use this score as a guide alongside a manual review.
+                </p>
             </div>
             <div class="info-modal-footer">
-                <p>Developed By Aryn Keenan</p>
+                <p>Copyright © 2026 Aryn Keenan. All Rights Reserved.</p>
             </div>
         </div>
     </div>
