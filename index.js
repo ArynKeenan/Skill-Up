@@ -69,6 +69,17 @@ document.addEventListener('DOMContentLoaded', function() {
         closeInfoModalBtn.addEventListener("click", closeInfoModal)
         closeInfoModalBtn.style.cursor = "pointer"
     }
+
+    // Keyboard support
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && inputEl === document.activeElement) {
+            if (addNewSkill) addNewSkill.click()
+        }
+        if (e.key === "Escape") {
+            closeSkillModal()
+            closeInfoModal()
+        }
+    })
 })
 
 const skillsDb = [
@@ -110,13 +121,23 @@ function render(skills) {
 
 function compareSkills() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (!tabs || !tabs[0]) {
+            alert("No active tab found. Please try again.")
+            return
+        }
+        
         chrome.scripting.executeScript(
             {
                 target: { tabId: tabs[0].id },
                 func: () => document.body.innerText,
             },
             (results) => {
-                if (chrome.runtime.lastError || !results || !results[0]) {
+                if (chrome.runtime.lastError) {
+                    alert("Extension doesn't have permission on this page. Try a job listing site like LinkedIn, Indeed, or Glassdoor.")
+                    return
+                }
+                
+                if (!results || !results[0]) {
                     alert("Couldn't read this page. Make sure you're on a job listing.")
                     return
                 }
@@ -164,32 +185,6 @@ function compareSkills() {
     })
 }
 
-// function compareSkills(){
-//     let numberOfSkills = 0
-//     let skillsToLearn = [...devSkills]
-
-//     resetHeaders()
-
-//     userSkills.forEach(userSkill => {
-//         devSkills.forEach(devSkill => {
-//             if (userSkill.toLowerCase() === devSkill.toLowerCase()) {
-//                 userSkillsEl.innerHTML += `<a class="green">${userSkill.charAt(0).toUpperCase() + userSkill.slice(1)}</a>`
-//                 numberOfSkills++
-//                 skillsToLearn = skillsToLearn.filter(skill => skill.toLowerCase() !== devSkill.toLowerCase())
-//             }
-//         })
-//     })
-
-//     skillsToLearn.forEach(skill => {
-//         learningSkillsEl.innerHTML += `<a class="red">${skill.charAt(0).toUpperCase() + skill.slice(1)}</a>`
-//     })
-
-//     userSkillsHeader.innerHTML = `<i class="fa fa-check-circle" aria-hidden="true"></i> You Have (${numberOfSkills})`
-//     userLearningHeader.innerHTML = `<i class="fa fa-times-circle" aria-hidden="true"></i> To Learn (${skillsToLearn.length})`
-
-//     setProgressPercentage(numberOfSkills, devSkills.length)
-// }
-
 function resetHeaders() {
     userSkillsEl.innerHTML = ''
     learningSkillsEl.innerHTML = ''
@@ -220,12 +215,4 @@ function openInfoModal(){
 }
 function closeInfoModal(){
   infoModalEl.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == skillModalEl) {
-    skillModalEl.style.display = "none";
-  } else if (event.target == infoModalEl) {
-    infoModalEl.style.display = "none";
-  }
 }

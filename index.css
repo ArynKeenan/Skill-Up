@@ -234,20 +234,6 @@ footer{
   display: flex;
 }
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .modal-navbar {
     flex-shrink: 0;
     justify-content: space-between;
@@ -283,6 +269,7 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 15px;
 }
 
 .modal-body {
@@ -333,6 +320,13 @@ footer{
     outline: 3px solid rgb(44, 156, 175);
     width: 128px;
     height: 36px;
+}
+
+.modal-button-remove:hover {
+    color: #ffffff;
+    transform: scale(1.05);
+    outline: 2px solid #70bdca;
+    box-shadow: 2px 3px 10px -2px #268391;
 }
 
 input {
