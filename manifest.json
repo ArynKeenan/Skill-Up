@@ -2,10 +2,20 @@
     "manifest_version": 3,
     "version": "1.0",
     "name": "Skill Up",
+    "description": "Analyse job descriptions in real-time to bridge the gap between your talent and your next role.",
+    "permissions": ["activeTab", "storage", "scripting"],
     "action": {
         "default_popup": "index.html",
-        "default_icon": "icon.png",
-        "default_title": "Skill Up - Job Skill Matcher"
+        "default_title": "Skill Up - Job Skill Matcher",
+        "default_icon": {
+            "16": "icon_16px.png",
+            "48": "icon_48px.png",
+            "128": "icon_128px.png"
+        }
     },
-    "permissions": ["activeTab", "storage", "scripting"]
+    "icons": {
+        "16": "icon_16px.png",
+        "48": "icon_48px.png",
+        "128": "icon_128px.png"
+    }
 }
