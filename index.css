@@ -14,6 +14,13 @@ h1 {
     font-weight: bold;
 }
 
+.logo {
+    font-family: "Pixelify Sans", Inter, sans-serif-serif;
+    font-weight: bold;
+    font-size: 32px;
+    color: rgb(44, 156, 175);
+}
+
 .navbar {
     justify-content: space-between;
     overflow: hidden;
