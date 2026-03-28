@@ -15,7 +15,7 @@ h1 {
 }
 
 .logo {
-    font-family: "Pixelify Sans", Inter, sans-serif-serif;
+    font-family: "Pixelify Sans", Inter, sans-serif;
     font-weight: bold;
     font-size: 32px;
     color: rgb(44, 156, 175);
@@ -365,4 +365,7 @@ input {
     outline: 3px solid rgb(44, 156, 175);
     width: 78px;
     height: 64px;
+}
+.modal-body p.info-body-instructions {
+    font-size: 14px;
 }
